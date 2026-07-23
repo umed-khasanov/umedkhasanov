@@ -183,7 +183,7 @@ onUnmounted(() => {
               <span v-if="index < project.tech.length - 1" class="dash">—</span>
             </template>
           </div>
-          <a href="#" class="view-link">View Tech Specs & Code ↗</a>
+          <a href="https://github.com/umed-khasanov/gradetracker" class="view-link">View Tech Specs & Code ↗</a>
         </div>
       </section>
 
