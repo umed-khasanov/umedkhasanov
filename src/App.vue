@@ -85,7 +85,7 @@ onUnmounted(() => {
 
 <template>
   <div class="top-left-logo">
-    <img src="./assets/logo.png" class="logo-image" alt="Umed Khasanov" />
+    <img src="./assets/Logo.png" class="logo-image" alt="Umed Khasanov" />
   </div>
 
   <div class="portfolio-container">
