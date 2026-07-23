@@ -27,7 +27,7 @@ const handleFormSubmit = async (e: Event) => {
   const form = e.target as HTMLFormElement
 
   try {
-    await fetch('https://formspree.io', {
+    await fetch('https://formspree.io/f/meeylyrr', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(contactForm.value)
@@ -85,8 +85,9 @@ onUnmounted(() => {
 
 <template>
   <div class="top-left-logo">
-    <img src="./assets/Logo.png" class="logo-image" alt="Umed Khasanov" />
+    <img src="https://dicebear.com" class="logo-image" alt="Umed Khasanov" />
   </div>
+
 
   <div class="portfolio-container">
     <div
