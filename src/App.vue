@@ -24,8 +24,6 @@ const contactForm = ref({
 })
 
 const handleFormSubmit = async (e: Event) => {
-  const form = e.target as HTMLFormElement
-
   try {
     await fetch('https://formspree.io/f/meeylyrr', {
       method: 'POST',
@@ -49,17 +47,11 @@ const handleMouseMove = (e: MouseEvent) => {
   mouseY.value = e.clientY
 }
 
-const showLogo = ref(false)
-
 const activeSection = ref('about')
 let observer: IntersectionObserver | null = null
 
 onMounted(() => {
   window.addEventListener('mousemove', handleMouseMove)
-
-  setTimeout(() => {
-    showLogo.value = true
-  }, 100)
 
   observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
@@ -83,12 +75,8 @@ onUnmounted(() => {
 </script>
 
 
+
 <template>
-  <div class="top-left-logo">
-    <img src="https://dicebear.com" class="logo-image" alt="Umed Khasanov" />
-  </div>
-
-
   <div class="portfolio-container">
     <div
         class="spotlight"
@@ -154,7 +142,6 @@ onUnmounted(() => {
 
       <hr class="section-divider" />
 
-      <!-- Секция CORE STACK -->
       <section id="stack" class="stack-section">
         <div class="stack-block">
           <div class="stack-header">
@@ -225,40 +212,16 @@ onUnmounted(() => {
           <button type="submit" class="submit-button">Send Message </button>
         </form>
       </section>
-
+      <footer class="site-footer">
+        <p>
+          Loosely designed in Figma and coded in IntelliJ IDEA Code by yours truly. Built with Vue.js and Tailwind CSS, deployed with Vercel. All text is set in the Inter typeface.
+        </p>
+      </footer>
     </main>
   </div>
 </template>
 
 <style scoped>
-.top-left-logo {
-  position: fixed;
-  top: 40px;
-  left: 60px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  z-index: 10000;
-  animation: pulse-fade 4s ease-in-out infinite;
-}
-
-.logo-image {
-  height: 40px;
-  width: auto;
-  display: block;
-}
-
-@keyframes pulse-fade {
-  0%, 100% {
-    opacity: 0.2;
-    transform: scale(0.98);
-  }
-  30% {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
 .spotlight {
   position: fixed;
   top: 0;
@@ -696,6 +659,22 @@ onUnmounted(() => {
   fill: #8E877D;
   transition: fill 0.3s ease;
 }
+.site-footer {
+  margin-top: 80px;
+  padding-bottom: 20px;
+  width: 100%;
+}
+
+.site-footer p {
+  font-size: 14px;
+  color: #5A5247;
+  line-height: 1.6;
+}
+
+.site-footer p span {
+  color: #B9B3A6;
+  font-weight: 500;
+}
 
 .social-link:hover .icon {
   fill: #B9B3A6;
@@ -704,32 +683,39 @@ onUnmounted(() => {
 @media (max-width: 1024px) {
   .portfolio-container {
     flex-direction: column;
-    padding: 120px 40px 60px 40px;
-  }
-
-  .top-left-logo {
-    top: 30px;
-    left: 40px;
+    max-width: 100%;
+    padding: 240px 24px 60px 24px;
+    gap: 40px;
   }
 
   .sidebar {
-    position: relative;
-    top: 0;
-    width: 100%;
-    margin-bottom: 50px;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 30px;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: auto !important;
+    background-color: #100808;
+    padding: 20px 24px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    z-index: 10000;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
   }
 
   .nav-links {
-    flex-direction: row;
-    width: 100%;
+    flex-direction: row !important;
+    flex-wrap: wrap;
+    gap: 10px 20px;
     justify-content: flex-start;
-    gap: 30px;
-    border-bottom: 1px solid #40382E;
-    padding-bottom: 15px;
+  }
+
+  .nav-item::before {
+    display: none !important;
+  }
+
+  .nav-item {
+    font-size: 15px;
   }
 
   .sidebar-panel {
@@ -739,9 +725,57 @@ onUnmounted(() => {
     min-width: 200px;
   }
 
+  .contact-panel .panel-title {
+    display: none !important;
+  }
+
+  .contact-list {
+    flex-direction: row !important;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px 20px;
+  }
+
+  .contact-link-item,
+  .contact-text-item {
+    font-size: 14px;
+  }
+
+  .resume-wrapper {
+    margin-top: 0 !important;
+    flex-grow: 1;
+    text-align: right;
+  }
+
+  .resume-button {
+    width: auto !important;
+    padding: 6px 14px;
+    font-size: 14px;
+  }
+
   .main-content {
     width: 100%;
     margin-left: 0;
+    gap: 50px;
+  }
+
+  .hero-name {
+    font-size: 32px;
+  }
+
+  .hero-title {
+    font-size: 18px;
+    margin-bottom: 25px;
+  }
+
+  .bio-text p,
+  .project-description {
+    font-size: 15px;
+    line-height: 1.6;
+  }
+  .site-footer {
+    margin-top: 50px;
+    text-align: left;
   }
 }
 
