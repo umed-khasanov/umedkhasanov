@@ -8,12 +8,14 @@ const projects = [
   {
     name: 'GradeTracker',
     description: 'Backend application for managing student academic records, built with Spring Boot. The system provides RESTful operations for student management, grade updates, and data validation while following clean architecture principles.',
-    tech: ['Spring Boot 3', 'Docker Compose', 'PostgreSQL', 'Java 21', 'Hibernate JPA', 'REST API']
+    tech: ['Spring Boot 3', 'Docker Compose', 'PostgreSQL', 'Java 21', 'Hibernate JPA', 'REST API'],
+    link: 'https://github.com/umed-khasanov/gradetracker'
   },
   {
     name: 'Microservices Ticket Stream',
     description: 'Microservices architecture built with Apache Kafka and Spring Security. The distributed system separates write-heavy ticket ingestion (Command Service), event processing streams (Kafka Broker), and role-based cryptographic network filters (JWT Gateway) for a scalable and resilient infrastructure.',
-    tech: ['Spring Boot 3', 'Docker Compose', 'PostgreSQL', 'Hibernate JPA', 'Java 21', 'Apache Kafka', 'REST API', 'Spring Security', 'JWT']
+    tech: ['Spring Boot 3', 'Docker Compose', 'PostgreSQL', 'Hibernate JPA', 'Java 21', 'Apache Kafka', 'REST API', 'Spring Security', 'JWT'],
+    link: 'https://github.com/umed-khasanov/microservicesTicketStream'
   }
 ]
 
@@ -183,7 +185,13 @@ onUnmounted(() => {
               <span v-if="index < project.tech.length - 1" class="dash">—</span>
             </template>
           </div>
-          <a href="https://github.com/umed-khasanov/gradetracker" class="view-link">View Tech Specs & Code ↗</a>
+          <a
+              :href="project.link"
+              target="_blank"
+              class="view-link"
+          >
+            View Architecture & Source Code ↗
+          </a>
         </div>
       </section>
 
@@ -384,6 +392,7 @@ onUnmounted(() => {
   border-radius: 2px;
   transition: color 0.3s ease, border-color 0.3s ease, background-color 0.3s ease;
 }
+
 
 .resume-button:hover {
   color: #100808;
